@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    style="@style/Theme.AppCompat.Dialog"
+    android:layout_marginLeft="10dp"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<TextView
+    style="@style/Text"
+    android:id="@+id/text"
+    android:layout_marginTop="20dp"
+    android:layout_gravity="center_horizontal"
+    android:text="@string/information"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"></TextView>
+    <TextView
+        style="@style/Text12pt"
+        android:layout_marginTop="30dp"
+        android:text="Gender" />
+    <Spinner
+        android:id="@+id/spinner"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="1dp"></Spinner>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e2e2e2">
+    </View>
+    <TextView
+        style="@style/Text12pt"
+        android:layout_marginTop="15dp"
+        android:text="Date of birth" />
+
+    <EditText
+       style="@style/EditText"
+        android:paddingTop="10dp"
+        android:id="@+id/date_edit"
+        android:hint="Date of birth">
+        <requestFocus/>
+    </EditText>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e2e2e2">
+    </View>
+</LinearLayout>
+
+        <Button
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:id="@+id/save_settings"
+            android:text="@string/save_changes"
+            android:onClick="onClick"
+            android:background="@drawable/save_changes"
+            android:textColor="#00b993"
+            style="@style/button"
+            android:layout_marginBottom="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

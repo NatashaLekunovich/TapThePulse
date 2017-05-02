@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    android:layout_width="220dp"
+    android:layout_height="150dp"
+    android:id="@+id/root">
+    <!-- android:background="@drawable/corners"!-->
+    <TextView
+        android:text="Write comment:"
+        android:paddingTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:textAlignment="center"
+        android:textSize="22sp" />
+    <FrameLayout
+        android:background="@drawable/dialog_window_lineal_layout"
+        android:layout_width="220dp"
+        android:layout_height="80dp"
+        android:layout_margin="10dp"
+        android:layout_gravity="center_horizontal">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:inputType="textMultiLine"
+        android:hint="My pulse"
+        android:ems="10"
+        android:background="@android:color/transparent"
+        android:id="@+id/comment"
+        android:padding="10dp" />
+</FrameLayout>
+</LinearLayout>

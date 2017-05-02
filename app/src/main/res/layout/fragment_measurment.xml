@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/mListener"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:weightSum="10"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_weight="0"
+        android:id="@+id/linear_layout"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            style="@style/Text_14pt"
+            android:text="Time:"
+            android:id="@+id/time"
+            android:paddingBottom="10px"
+            android:layout_weight="1" />
+        <TextView
+            style="@style/Text_14pt"
+            android:text="00:00.000"
+            android:id="@+id/timer" />
+    </LinearLayout>
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:progressDrawable="@drawable/redprogress"
+        android:layout_below="@+id/linear_layout"
+        android:layout_centerHorizontal="true"
+        android:max="60"
+        android:id="@+id/progressBar"
+        android:layout_height="10dp" />
+
+    <TextView
+        android:layout_weight="1.5"
+        android:text="Palpate arterial pulse"
+        style="@style/Text"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical|center_horizontal" />
+<LinearLayout android:layout_height="0dp"
+    android:layout_weight="5"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/lin_img">
+
+</LinearLayout>
+
+    <!--ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:id="@+id/bigheart"
+            android:src="@drawable/big_heart"
+            android:layout_below="@+id/textView4"
+
+            android:layout_gravity="center_horizontal"
+            android:adjustViewBounds="false">
+        </ImageView!-->
+
+    <TextView
+        style="@style/Text"
+        android:layout_weight="3"
+        android:text="@string/tap_the_screen"
+        android:layout_marginTop="10dp"
+        android:id="@+id/textView5"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="false"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical" />
+
+</LinearLayout>

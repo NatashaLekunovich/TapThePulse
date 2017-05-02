@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+    android:layout_marginTop="25dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:weightSum="10"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+        <TextView
+            style="@style/Text_tutorial"
+            android:id="@+id/tvPage"
+            android:layout_weight="2.5"
+
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:text="@string/get_the_result"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical|center_horizontal">
+        </TextView>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_weight="5"
+            android:layout_height="0dp"
+            android:src="@drawable/number_in_circle"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/imageView2" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|center_horizontal">
+            <TextView
+                style="@style/Text_tutorial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="and"/>
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="40dp"
+                android:src="@drawable/save_button"/>
+            <TextView
+                style="@style/Text_tutorial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="it"/>
+        </LinearLayout>
+    </LinearLayout>

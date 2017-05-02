@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+
+    android:weightSum="10"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="@drawable/history_item"
+        android:layout_marginRight="5dp"
+        android:orientation="vertical">
+        <TextView
+            style="@style/Text12pt"
+            android:text="TextView"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/pulse_period" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#e9e9e9"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RelativeLayout
+                android:layout_width="25dp"
+                android:layout_height="210dp"
+                android:id="@+id/relative_layout"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="vertical">
+                <TextView
+                    style="@style/Text_scale_vertical"
+                    android:layout_marginBottom="30dp"
+                    android:layout_alignParentTop="true"
+                    android:text="200"/>
+                <TextView
+                    style="@style/Text_scale_vertical"
+                    android:layout_marginTop="50dp"
+                    android:layout_alignParentTop="true"
+                    android:text="150"/>
+                <TextView
+                    style="@style/Text_scale_vertical"
+                    android:layout_marginBottom="95dp"
+                    android:layout_alignParentBottom="true"
+                    android:text="100"/>
+                <TextView
+                    style="@style/Text_scale_vertical"
+                    android:layout_marginBottom="45dp"
+                    android:layout_alignParentBottom="true"
+                    android:text="50" />
+                <TextView
+                    style="@style/Text_scale_vertical"
+                    android:layout_alignParentBottom="true"
+                    android:text="0" />
+            </RelativeLayout>
+            <RelativeLayout
+                    android:id="@+id/llMain"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp">
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_layout_st"
+        android:background="@drawable/history_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+        <TextView
+            style="@style/Text"
+            android:textSize="20sp"
+           android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="15dp"
+            android:text="Statistics">
+        </TextView>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#e9e9e9"/>
+
+        <TableLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TableRow android:gravity="center_horizontal">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:orientation="vertical"
+                    android:id="@+id/linear_layout"
+                    android:layout_height="match_parent">
+
+                <TextView
+                    style="@style/pulse_in_statistics"
+                    android:text="57"
+                    android:textColor="#d81c1c"
+                    android:id="@+id/min" />
+                <TextView
+                    android:text="@string/min_heart"
+                    style="@style/Text_9pt"
+                    android:gravity="center_horizontal"
+                    android:textAlignment="center" />
+                </LinearLayout>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_height="match_parent"
+                    android:background="#e9e9e9"/>
+                <LinearLayout
+                android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:id="@+id/ll"
+
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="5"
+                    android:textColor="#d81c1c"
+                    style="@style/pulse_in_statistics"
+                    android:id="@+id/max" />
+                    <TextView
+                        android:text="@string/max_heart"
+                        style="@style/Text_9pt"
+                        android:gravity="center_horizontal" />
+                </LinearLayout>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#e9e9e9"
+                    android:layout_toLeftOf="@+id/ll" />
+                <LinearLayout
+                    android:paddingRight="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:layout_height="wrap_content">
+                <TextView
+                    android:text="47"
+                    android:gravity="center_horizontal"
+                    style="@style/pulse_in_statistics"
+                    android:textColor="#00b993"
+                    android:id="@+id/avg" />
+                    <TextView
+                        android:text="@string/avg_heart"
+                        style="@style/Text_9pt"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_horizontal" />
+                </LinearLayout>
+            </TableRow>
+        </TableLayout>
+</LinearLayout>
+
+
+</LinearLayout>

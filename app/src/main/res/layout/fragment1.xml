@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:orientation="vertical"
+        android:weightSum="10"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/linear_layout"
+            android:orientation="horizontal"
+            android:layout_weight="0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+            <TextView
+                style="@style/Text_14pt"
+                android:text="Time:"
+                android:id="@+id/time"
+                android:paddingBottom="10px"
+                android:textColor="#595959"
+                android:layout_weight="1" />
+            <TextView
+                style="@style/Text_14pt"
+                android:text="01:00.000"
+                android:textColor="#595959"
+                android:id="@+id/timer" />
+        </LinearLayout>
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_weight="0"
+            android:progressDrawable="@drawable/redprogress"
+            android:layout_below="@+id/linear_layout"
+            android:layout_centerHorizontal="true"
+            android:max="60"
+            android:progress="60"
+            android:id="@+id/progressBar"
+            android:layout_height="10dp" />
+        <TextView
+            style="@style/Text"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:text="@string/your_pulse"
+            android:gravity="bottom|center_horizontal">
+        </TextView>
+
+        <TextView
+            android:text="279"
+            android:layout_weight="5.5"
+            android:textColor="#d81c1c"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/tvMessage"
+            android:textSize="155sp"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical|center_horizontal" />
+
+        <TextView
+            style="@style/Text"
+            android:layout_weight="1.5"
+            android:text="@string/minute"
+
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal">
+        </TextView>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+            <Button
+                style="@style/button"
+                android:id="@+id/restart"
+                android:text="Restart"
+                android:layout_weight="1"
+                android:textColor="#d81c1c"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/button_red" />
+            <Button
+                style="@style/button"
+                android:id="@+id/save"
+                android:text="Save"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:textColor="#00b993"
+                android:background="@drawable/save_changes" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

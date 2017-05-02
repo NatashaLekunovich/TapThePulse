@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginRight="16dp"
+    android:layout_marginLeft="16dp"
+    android:weightSum="10">
+
+    <TextView
+        style="@style/Text_tutorial"
+        android:id="@+id/tvPage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:text="@string/palpate"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical|center_horizontal">
+    </TextView>
+    <ImageView
+        android:layout_weight="4"
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:src="@drawable/tutorial_2"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        style="@style/Text_tutorial"
+        android:id="@+id/tvPage1"
+        android:layout_weight="3"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/tap_screen"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical|center_horizontal">
+    </TextView>
+</LinearLayout>

@@ -1,0 +1,65 @@
+<resources>
+    <string name="app_name">ThePulse</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="tap_the_screen">Tap the screen "\n" after each "\n" beat of the heart</string>
+    <string name="your_pulse">Your pulse is</string>
+    <string name="minute">beats per minute</string>
+<string name="instructions">
+    "    "All you need is to palpate arterial
+    pulse and tap the screen after  every
+    beat of the heart. Or you can ask
+    someone to do this for you."\n"
+    "   "You have
+    an opportunity to save your results
+    with  comment.  Then  you  can  view
+    results  in History and remove some
+    items from list."\n"
+    "   "Statistics show you
+    chart of results at selected period.
+    Chart would help you to plan your
+    trainings by  indicating  your  individual
+    heart  rate  zones  of load. </string>
+    <string name="information">Your information</string>
+    <string name="save_changes">Save changes</string>
+    <string name="choose_period">Choose a period "\n"of statistics</string>
+
+    <string name="max">Maximum heart rate</string>
+    <string name="max_desc">Here your pulse is over your maximum heart rate.Stop training. If heart rate
+    stay in this zone too long, you need a doctor</string>
+    <string name="anaerobic">Anaerobic zone</string>
+    <string name="anaer_desc"> In this zone, you’re improving your maximum
+    performance capacity. Training at this intensity
+    level is recommended for short periods of time.
+    Be careful here. </string>
+    <string name="aerobic">Aerobic zone​</string>
+    <string name="aerobic_desc">Workouts in this zone help to improve aerobic
+    fitness (your body’s utilization of oxygen) and
+    delay the fatigue caused by lactic acid</string>
+    <string name="fat">Fat burning zone</string>
+    <string name="fat_desc">At a light intensity, this zone enhances your
+    endurance and the efficiency with which you
+    use fat and carbohydrates as fuel.</string>
+    <string name="recovery">Recovery zone​</string>
+    <string name="recovery_desc">This zone encourages the flow of blood, which
+    is key to maintaining a healthy heart and
+    improving recovery after difficult workouts.</string>
+    <string name="rest​">Rest​</string>
+    <string name="rest_desc">Resting heart rate.</string>
+    <string name="slow">Slow heart rate​</string>
+    <string name="slow_desc">Heart rate is slow, but it may be individual norm of resting heart rate.</string>
+    <string name="bradycardia​">Bradycardia​</string>
+    <string name="brad_desc">Your heart rate is too slow. You need a doctor.</string>
+    <string name="max_heart"> Maximum"\n"heart rate</string>
+    <string name="min_heart"> Minimum"\n"heart rate</string>
+    <string name="avg_heart"> Average"\n"heart rate</string>
+    <string name="let_me">Let me explain"\n"to you how to work"\n"with me!</string>
+    <string name="palpate">Palpate arterial pulse</string>
+    <string name="tap_screen">Tap the screen after"\n"each beat of the heart</string>
+    <string name="get_the_result">Get the measured"\n"result in bpm</string>
+    <string name="build">Build a chart for"\n"the selected period"\n"of measurements</string>
+    <string name="plan">Plan your trainings"\n"orthe best results</string>
+</resources>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single" android:textSize="14sp">
+        <item
+            android:id="@+id/measure"
+            android:icon="@drawable/clock"
+            android:title="Measure the pulse" />
+        <item
+            android:id="@+id/history"
+            android:icon="@drawable/calendar"
+            android:title="History" />
+        <item
+            android:id="@+id/statistics"
+            android:icon="@drawable/graph"
+            android:title="Statistics" />
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/ic_action_name"
+            android:title="Settings" />
+        <item
+            android:id="@+id/instructions"
+            android:icon="@drawable/books"
+            android:title="Instructions" />
+        <item
+            android:id="@+id/store"
+            android:icon="@drawable/store"
+            android:title="Rate us on the AppStore" />
+    </group>
+
+    <!--item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item!-->
+
+</menu>
