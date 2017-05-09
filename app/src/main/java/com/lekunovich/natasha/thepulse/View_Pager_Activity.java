@@ -24,9 +24,7 @@ public class View_Pager_Activity  extends FragmentActivity implements ViewPager.
     MyFragmentPagerAdapter mAdapter;
     private int dotsCount;
     private ImageView[] dots;
-   // ImageView layout_fr;
     private LinearLayout pager_indicator;
-    //int pageNumber;
 
     public void Finish(String fragment4){
         if(fragment4 == "finish"){
