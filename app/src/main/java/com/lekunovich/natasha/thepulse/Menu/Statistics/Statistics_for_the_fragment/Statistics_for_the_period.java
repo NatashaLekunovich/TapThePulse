@@ -1,13 +1,11 @@
 package com.lekunovich.natasha.thepulse.Menu.Statistics.Statistics_for_the_fragment;
 
+import android.app.Fragment;
 import android.content.SharedPreferences;
-
 import android.database.Cursor;
-import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -19,16 +17,12 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.lekunovich.natasha.thepulse.DB;
 import com.lekunovich.natasha.thepulse.MainActivity;
 import com.lekunovich.natasha.thepulse.R;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import static java.lang.Math.exp;
-
 
 public class Statistics_for_the_period extends Fragment {
     MainActivity main;
@@ -39,9 +33,7 @@ public class Statistics_for_the_period extends Fragment {
     LinearLayout linear_layout_st;
     SharedPreferences sharedPreferences;
     static final String LOG_TAG = "myLogs";
-   // String first_format, last_format;
     private double max_pul;
-   // int max_gender;
     private int n = 20;
 
     @Nullable
@@ -104,7 +96,6 @@ public class Statistics_for_the_period extends Fragment {
         db = new DB(getActivity());
         db.open();
         sharedPreferences = getActivity().getSharedPreferences("settings", 0);
-
         //получить период для статистики
         String pulse_Val = sharedPreferences.getString("f", "").toString();
         String pulse_Val2 = sharedPreferences.getString("l", "").toString();
@@ -136,7 +127,6 @@ public class Statistics_for_the_period extends Fragment {
             } while (cursor4.moveToNext());
             cursor4.close();
         }
-
     }
 
     public void getHeartRate(Cursor cursor_cursor, TextView tv) {
@@ -166,10 +156,8 @@ public class Statistics_for_the_period extends Fragment {
     }
 
     public void diagram(double max_pulse, int cab){
-        // slow_heart = 38;
         int rest_p = 0;
         int x1 = pxToDp(38);
-        //int color1 = Color.parseColor("#49c1df");
         zone(x1, 0 , ContextCompat.getColor(getActivity(), R.color.diagr_color1));
         if(cab>=15 || cab <=49 ){
             rest_p = 60;
@@ -178,40 +166,21 @@ public class Statistics_for_the_period extends Fragment {
         }else if(cab>=60 || cab<=80){
             rest_p = 69;
         }
-        //rest = (int)rest_p;
         int x2 = pxToDp(rest_p);
-        //int color2 = Color.parseColor("#59e6dd");
         zone(x2, x1 ,ContextCompat.getColor(getActivity(), R.color.diagr_color2));
-
-        //recovery = (int)(max_pulse*0.5);
         int x3 = pxToDp((int)(max_pulse*0.5));
-        //int color3 = Color.parseColor("#68e191");
         zone(x3, x2 ,ContextCompat.getColor(getActivity(), R.color.diagr_color3));
-        //fat_burning = (int)(max_pulse * 0.6);
         int x4 = pxToDp((int)(max_pulse * 0.6));
-        //int color4 = Color.parseColor("#ade8a2");
         zone(x4, x3 ,ContextCompat.getColor(getActivity(), R.color.diagr_color4));
-
-        //aerobic = (int)(max_pulse * 0.7);
         int x5 = pxToDp((int)(max_pulse * 0.7));
-        //int color5 = Color.parseColor("#e7eaad");
         zone(x5, x4 ,ContextCompat.getColor(getActivity(), R.color.diagr_color5));
-
-        //anaerobic = (int)(max_pulse * 0.8);
         int x6 = pxToDp((int)(max_pulse * 0.8));
-        //int color6 = Color.parseColor("#ead7ad");
         zone(x6, x5 ,ContextCompat.getColor(getActivity(), R.color.diagr_color6));
-
         int x7 = pxToDp((int)max_pul);
-        //int color7 = Color.parseColor("#e5b88f");
         zone(x7, x6 ,ContextCompat.getColor(getActivity(), R.color.diagr_color7));
-
         int x8 = pxToDp(50);
-        //int color8 = Color.parseColor("#e69990");
         zone(x8, x7 ,ContextCompat.getColor(getActivity(), R.color.diagr_color8));
-
     }
-
 
     @Override
     public void onPause() {

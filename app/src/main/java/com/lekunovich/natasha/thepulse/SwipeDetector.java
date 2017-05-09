@@ -1,9 +1,6 @@
 package com.lekunovich.natasha.thepulse;
-
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-
 
 public class SwipeDetector implements View.OnTouchListener {
     final String LOG_TAG = "myLogs";
@@ -48,31 +45,30 @@ public class SwipeDetector implements View.OnTouchListener {
                 float deltaY = downY - upY;
                 // Обнаружение горизонтального свайпа
                 if (Math.abs(deltaX) > HORIZONTAL_MIN_DISTANCE) {
-                   // Log.d(LOG_TAG, "swape");
                     // Слева направо
                     if (deltaX < 0) {
                         mSwipeDetected = Action.LR;
                         return true;
-                    }} else
-
-                        // Обнаружение вертикального свайпа
-                        if (Math.abs(deltaY) > VERTICAL_MIN_DISTANCE) {
-                            // Сверху вниз
-                            if (deltaY < 0) {
-                                mSwipeDetected = Action.TB;
-                                return false;
-                            }
-                            // Снизу вверх
-                            if (deltaY > 0) {
-                                mSwipeDetected = Action.BT;
-                                return false;
-                            }
+                    }
+                } else
+                    // Обнаружение вертикального свайпа
+                    if (Math.abs(deltaY) > VERTICAL_MIN_DISTANCE) {
+                        // Сверху вниз
+                        if (deltaY < 0) {
+                            mSwipeDetected = Action.TB;
+                            return false;
+                        }
+                        // Снизу вверх
+                        if (deltaY > 0) {
+                            mSwipeDetected = Action.BT;
+                            return false;
+                        }
                             // Справа налево
                  /*   if (deltaX > 0) {
                         mSwipeDetected = Action.RL;
                         return true;
                     }*/
-                        }
+                    }
                     return true;
                 }
             }

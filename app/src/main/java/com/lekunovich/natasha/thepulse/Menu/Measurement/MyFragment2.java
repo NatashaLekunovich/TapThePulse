@@ -1,5 +1,4 @@
 package com.lekunovich.natasha.thepulse.Menu.Measurement;
-
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -20,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import com.lekunovich.natasha.thepulse.Menu.History;
 import com.lekunovich.natasha.thepulse.Menu.Settings_Fragment;
 import com.lekunovich.natasha.thepulse.R;

@@ -8,14 +8,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-
 import com.lekunovich.natasha.thepulse.DB;
 import com.lekunovich.natasha.thepulse.Menu.History;
 import com.lekunovich.natasha.thepulse.Menu.Measurement.MyFragment1;
 import com.lekunovich.natasha.thepulse.Menu.Measurement.MyFragment2;
 import com.lekunovich.natasha.thepulse.Menu.Settings_Fragment;
 import com.lekunovich.natasha.thepulse.R;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;

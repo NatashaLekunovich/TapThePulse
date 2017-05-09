@@ -3,12 +3,9 @@ package com.lekunovich.natasha.thepulse;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 public class DB extends Activity {
     final String LOG_TAG = "myLogs";
@@ -102,11 +99,13 @@ public class DB extends Activity {
                         int version) {
             super(context, name, factory, version);
         }
+
         // создаем и заполняем БД
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL(DB_CREATE);
         }
+
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         }

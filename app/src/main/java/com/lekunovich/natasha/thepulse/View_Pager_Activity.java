@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.ViewPager;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -23,9 +24,9 @@ public class View_Pager_Activity  extends FragmentActivity implements ViewPager.
     MyFragmentPagerAdapter mAdapter;
     private int dotsCount;
     private ImageView[] dots;
-    ImageView layout_fr;
-    private LinearLayout pager_indicator, box_for_layout;
-    int pageNumber;
+   // ImageView layout_fr;
+    private LinearLayout pager_indicator;
+    //int pageNumber;
 
     public void Finish(String fragment4){
         if(fragment4 == "finish"){
@@ -48,7 +49,7 @@ public class View_Pager_Activity  extends FragmentActivity implements ViewPager.
         pager_indicator = (LinearLayout) findViewById(R.id.viewPagerCountDots);
         mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(mAdapter);
-        mViewPager.setOnPageChangeListener(this);
+        mViewPager.addOnPageChangeListener(this);
     setPageViewIndicator();
     }
 
@@ -57,7 +58,7 @@ public class View_Pager_Activity  extends FragmentActivity implements ViewPager.
         dots = new ImageView[dotsCount];
         for (int i = 0; i < dotsCount; i++) {
             dots[i] = new ImageView(this);
-            dots[i].setImageDrawable(getResources().getDrawable(R.drawable.green));
+            dots[i].setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.green, null));
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
@@ -73,7 +74,7 @@ public class View_Pager_Activity  extends FragmentActivity implements ViewPager.
                 }
             });
             pager_indicator.addView(dots[i], params);
-        } dots[0].setImageDrawable(getResources().getDrawable(R.drawable.red));
+        } dots[0].setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.red, null));
 
     }
 
@@ -84,9 +85,9 @@ public class View_Pager_Activity  extends FragmentActivity implements ViewPager.
     @Override
     public void onPageSelected(int position) {
         for (int i = 0; i < dotsCount; i++) {
-            dots[i].setImageDrawable(getResources().getDrawable(R.drawable.green));
+            dots[i].setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.green, null));
         }
-        dots[position].setImageDrawable(getResources().getDrawable(R.drawable.red));
+        dots[position].setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.red, null));
     }
 
     @Override
@@ -94,6 +95,7 @@ public class View_Pager_Activity  extends FragmentActivity implements ViewPager.
 
     }
     private class MyFragmentPagerAdapter extends FragmentPagerAdapter {
+
         public MyFragmentPagerAdapter(FragmentManager fm) {
             super(fm);
         }
@@ -111,9 +113,7 @@ public class View_Pager_Activity  extends FragmentActivity implements ViewPager.
                     return ViewPager_Fr4.newInstance(3);
                 default:
                     return null;
-        }
-
-        // static final int PAGE_COUNT = 4;
+            }
         }
 
         @Override
@@ -121,9 +121,9 @@ public class View_Pager_Activity  extends FragmentActivity implements ViewPager.
             return 4;
         }
     }
+
     public static class ViewPager_Fr1 extends Fragment {
         static final String ARGUMENT_PAGE_NUMBER = "arg_page_number";
-        static final String LOG_TAG = "myLogs";
 
         static ViewPager_Fr1 newInstance(int page) {
             ViewPager_Fr1 pageFragment = new ViewPager_Fr1();
@@ -140,9 +140,9 @@ public class View_Pager_Activity  extends FragmentActivity implements ViewPager.
             return view;
         }
     }
+
     public static class ViewPager_Fr2 extends Fragment {
         static final String ARGUMENT_PAGE_NUMBER = "arg_page_number";
-        static final String LOG_TAG = "myLogs";
 
         static ViewPager_Fr2 newInstance(int page) {
             ViewPager_Fr2 pageFragment = new ViewPager_Fr2();
@@ -159,9 +159,10 @@ public class View_Pager_Activity  extends FragmentActivity implements ViewPager.
             return view;
         }
     }
+
     public static class ViewPager_Fr3 extends Fragment{
         static final String ARGUMENT_PAGE_NUMBER = "arg_page_number";
-        static final String LOG_TAG = "myLogs";
+
         static ViewPager_Fr3 newInstance (int page){
            ViewPager_Fr3 pageFragment = new ViewPager_Fr3();
             Bundle arguments = new Bundle();
@@ -179,9 +180,9 @@ public class View_Pager_Activity  extends FragmentActivity implements ViewPager.
     }
     public static class ViewPager_Fr4 extends Fragment implements View.OnClickListener{
         static final String ARGUMENT_PAGE_NUMBER = "arg_page_number";
-        static final String LOG_TAG = "myLogs";
         Button finish;
         View_Pager_Activity view_pager_activity;
+
         static ViewPager_Fr4 newInstance (int page){
             ViewPager_Fr4 pageFragment = new ViewPager_Fr4();
             Bundle arguments = new Bundle();

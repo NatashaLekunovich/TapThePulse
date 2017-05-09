@@ -75,7 +75,7 @@ public class Statistics_Fragment extends Fragment{
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-                // передать данные для отображения
+             // передать данные для отображения
             SharedPreferences.Editor e = prefs.edit();
             e.putString("f", s1);
             e.putString("l", s2);

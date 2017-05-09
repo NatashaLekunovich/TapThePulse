@@ -21,11 +21,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.lekunovich.natasha.thepulse.Menu.Measurement.MyFragment2;
 import com.lekunovich.natasha.thepulse.Menu.Statistics.Statistics_for_the_fragment.Statistics_for_the_period;
 import com.lekunovich.natasha.thepulse.R;
-
 import java.util.Calendar;
 import java.util.Date;
 

@@ -13,11 +13,9 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.support.v4.widget.SimpleCursorAdapter;
-
 import com.lekunovich.natasha.thepulse.DB;
 import com.lekunovich.natasha.thepulse.R;
 import com.lekunovich.natasha.thepulse.SwipeDetector;
@@ -53,21 +51,9 @@ public  class History extends Fragment  {
         db = new DB(getActivity());
         db.open();
         cursor = db.getAllData();
-        //from = new String[]{DB.KEY_DATE, DB.KEY_TIME, DB.COLUMN_PULSE, DB.COLUMN_COMMENT};
-        //int[] to = new int[]{R.id.date_time, R.id.time, R.id.pulse, R.id.comment};
         scAdapter1 = new SimpleCursorAdapter(view_history.getContext(), R.layout.item_history, cursor, from, to, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
         lvData = (ListView) view_history.findViewById(R.id.lvData);
         lvData.setAdapter(scAdapter1);
-
-        /*lvData.setOnScrollListener(new AbsListView.OnScrollListener() {
-            //@Override
-            //public void onScrollStateChanged(AbsListView view, int scrollState) {
-            //}
-            @Override
-            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-            }
-        });*/
-
         final SwipeDetector swipeDetector = new SwipeDetector();
         lvData.setOnTouchListener(swipeDetector);
         lvData.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -77,11 +63,11 @@ public  class History extends Fragment  {
                 msg.arg1 = position;
                 // Если был обнаружен свайп, то удаляем айтем
                 if (swipeDetector.swipeDetected()){
-                        msg.what = MSG_ANIMATION_REMOVE;
-                        msg.arg2 = swipeDetector.getAction() == SwipeDetector.Action.LR ? 1 : 0;
-                        msg.obj = view;
-                        db.delRec(id);
-                        getHandler().sendMessage(msg);
+                    msg.what = MSG_ANIMATION_REMOVE;
+                    msg.arg2 = swipeDetector.getAction() == SwipeDetector.Action.LR ? 1 : 0;
+                    msg.obj = view;
+                    db.delRec(id);
+                    getHandler().sendMessage(msg);
                 }
             }
         });
@@ -102,7 +88,6 @@ public  class History extends Fragment  {
     public class DeleteAnimationListener implements Animation.AnimationListener
     {
         int position;
-
         public DeleteAnimationListener(int position)
         {
             this.position = position;
@@ -111,8 +96,6 @@ public  class History extends Fragment  {
         @Override
         public void onAnimationEnd(Animation arg0) {
             cursor = db.getAllData();
-            //from = new String[]{DB.KEY_DATE, DB.KEY_TIME, DB.COLUMN_PULSE, DB.COLUMN_COMMENT};
-            //int[] to = new int[]{R.id.date_time, R.id.time, R.id.pulse, R.id.comment};
             scAdapter1 = new SimpleCursorAdapter(view_history.getContext(), R.layout.item_history, cursor, from, to, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
             lvData = (ListView) view_history.findViewById(R.id.lvData);
             lvData.setAdapter(scAdapter1);

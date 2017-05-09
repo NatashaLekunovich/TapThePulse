@@ -83,7 +83,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
            e.putBoolean("hasVisited", true);
            e.apply();
        }
-
        if(savedInstanceState == null){
            replace_Fragment(myFragment2, "Measurement");
        }

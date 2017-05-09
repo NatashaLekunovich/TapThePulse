@@ -14,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.lekunovich.natasha.thepulse.Menu.Measurement.Dialog_Fragment.Dialog_Fragment;
 import com.lekunovich.natasha.thepulse.R;
 
