@@ -62,4 +62,24 @@
     <string name="get_the_result">Get the measured"\n"result in bpm</string>
     <string name="build">Build a chart for"\n"the selected period"\n"of measurements</string>
     <string name="plan">Plan your trainings"\n"orthe best results</string>
+    <string name="date_of_birth">Введите дату рождения!</string>
+    <string name="date_of_birth2">Date of birth</string>
+    <string name="save">Save</string>
+    <string name="restart">Restart</string>
+    <string name="time">Time:</string>
+    <string name="time_number">01:00.000</string>
+    <string name="time_number2">00:00.000</string>
+    <string name="bps">bps</string>
+    <string name="gender">Gender</string>
+    <string name="first_date">First date:</string>
+    <string name="last_date">Last date:</string>
+    <string name="show_st">Show statistics</string>
+    <string name="statistics">Statistics</string>
+    <string name="hi">Hiiiiiiii!</string>
+    <string name="and">and</string>
+    <string name="it">it</string>
+    <string name="meas">Measurement</string>
+    <string name="comment">Write comment:</string>
+    <string name="pulse">My pulse</string>
+
 </resources>

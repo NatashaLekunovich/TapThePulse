@@ -1,33 +1,32 @@
 package com.lekunovich.natasha.thepulse;
 
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-public class View_Pager_Activity  extends FragmentActivity
-        implements View.OnClickListener, ViewPager.OnPageChangeListener{
+public class View_Pager_Activity  extends FragmentActivity implements ViewPager.OnPageChangeListener{
     static final String LOG_TAG = "myLogs";
     ViewPager mViewPager;
-    private MyFragmentPagerAdapter mAdapter;
+    MyFragmentPagerAdapter mAdapter;
     private int dotsCount;
     private ImageView[] dots;
-    private LinearLayout pager_indicator;
+    ImageView layout_fr;
+    private LinearLayout pager_indicator, box_for_layout;
+    int pageNumber;
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-
-    }
     public void Finish(String fragment4){
         if(fragment4 == "finish"){
          System.exit(0);
@@ -42,7 +41,7 @@ public class View_Pager_Activity  extends FragmentActivity
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view__pager);
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -50,7 +49,7 @@ public class View_Pager_Activity  extends FragmentActivity
         mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(mAdapter);
         mViewPager.setOnPageChangeListener(this);
-        setPageViewIndicator();
+    setPageViewIndicator();
     }
 
     private void setPageViewIndicator() {
@@ -79,10 +78,6 @@ public class View_Pager_Activity  extends FragmentActivity
     }
 
     @Override
-    public void onClick(View v) {
-    }
-
-    @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
     }
 
@@ -92,7 +87,6 @@ public class View_Pager_Activity  extends FragmentActivity
             dots[i].setImageDrawable(getResources().getDrawable(R.drawable.green));
         }
         dots[position].setImageDrawable(getResources().getDrawable(R.drawable.red));
-
     }
 
     @Override
@@ -100,8 +94,7 @@ public class View_Pager_Activity  extends FragmentActivity
 
     }
     private class MyFragmentPagerAdapter extends FragmentPagerAdapter {
-        static final int PAGE_COUNT = 4;
-        public MyFragmentPagerAdapter(FragmentManager fm){
+        public MyFragmentPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
@@ -109,21 +102,108 @@ public class View_Pager_Activity  extends FragmentActivity
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                      return ViewPager_Fr1.newInstance(0);
+                    return ViewPager_Fr1.newInstance(0);
                 case 1:
-                     return ViewPager_Fr2.newInstance(1);
+                    return ViewPager_Fr2.newInstance(1);
                 case 2:
                     return ViewPager_Fr3.newInstance(2);
                 case 3:
                     return ViewPager_Fr4.newInstance(3);
                 default:
                     return null;
-            }
+        }
+
+        // static final int PAGE_COUNT = 4;
         }
 
         @Override
         public int getCount() {
-            return PAGE_COUNT;
+            return 4;
+        }
+    }
+    public static class ViewPager_Fr1 extends Fragment {
+        static final String ARGUMENT_PAGE_NUMBER = "arg_page_number";
+        static final String LOG_TAG = "myLogs";
+
+        static ViewPager_Fr1 newInstance(int page) {
+            ViewPager_Fr1 pageFragment = new ViewPager_Fr1();
+            Bundle arguments = new Bundle();
+            arguments.putInt(ARGUMENT_PAGE_NUMBER, page);
+            pageFragment.setArguments(arguments);
+            return pageFragment;
+        }
+
+        @Nullable
+        @Override
+        public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+            View view = inflater.inflate(R.layout.view_pager_fragment1, null);
+            return view;
+        }
+    }
+    public static class ViewPager_Fr2 extends Fragment {
+        static final String ARGUMENT_PAGE_NUMBER = "arg_page_number";
+        static final String LOG_TAG = "myLogs";
+
+        static ViewPager_Fr2 newInstance(int page) {
+            ViewPager_Fr2 pageFragment = new ViewPager_Fr2();
+            Bundle arguments = new Bundle();
+            arguments.putInt(ARGUMENT_PAGE_NUMBER, page);
+            pageFragment.setArguments(arguments);
+            return pageFragment;
+        }
+
+        @Nullable
+        @Override
+        public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+            View view = inflater.inflate(R.layout.view_pager_fragment2, null);
+            return view;
+        }
+    }
+    public static class ViewPager_Fr3 extends Fragment{
+        static final String ARGUMENT_PAGE_NUMBER = "arg_page_number";
+        static final String LOG_TAG = "myLogs";
+        static ViewPager_Fr3 newInstance (int page){
+           ViewPager_Fr3 pageFragment = new ViewPager_Fr3();
+            Bundle arguments = new Bundle();
+            arguments.putInt(ARGUMENT_PAGE_NUMBER, page);
+            pageFragment.setArguments(arguments);
+            return  pageFragment;
+        }
+
+        @Nullable
+        @Override
+        public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+            View view = inflater.inflate(R.layout.view_pager_fragment3, null);
+            return view;
+        }
+    }
+    public static class ViewPager_Fr4 extends Fragment implements View.OnClickListener{
+        static final String ARGUMENT_PAGE_NUMBER = "arg_page_number";
+        static final String LOG_TAG = "myLogs";
+        Button finish;
+        View_Pager_Activity view_pager_activity;
+        static ViewPager_Fr4 newInstance (int page){
+            ViewPager_Fr4 pageFragment = new ViewPager_Fr4();
+            Bundle arguments = new Bundle();
+            arguments.putInt(ARGUMENT_PAGE_NUMBER, page);
+            pageFragment.setArguments(arguments);
+            return  pageFragment;
+        }
+
+        @Nullable
+        @Override
+        public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+            View view = inflater.inflate(R.layout.view_pager_fragment4, null);
+            finish = (Button) view.findViewById(R.id.finish);
+            finish.setOnClickListener(this);
+            return view;
+        }
+
+        @Override
+        public void onClick(View v) {
+            finish.setBackgroundColor(Color.parseColor("#ead7ad"));
+            view_pager_activity = new View_Pager_Activity();
+            view_pager_activity.Finish("finish");
         }
     }
 }

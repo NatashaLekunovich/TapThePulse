@@ -1,33 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:orientation="vertical"
-        android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_marginRight="16dp"
+    android:layout_marginLeft="16dp"
+    android:weightSum="10">
+    <TextView
+        style="@style/Text_tutorial"
+        android:layout_weight="2"
+        android:id="@+id/tvPage"
         android:layout_width="match_parent"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
-        android:weightSum="10">
-        <TextView
-            style="@style/Text_tutorial"
-            android:layout_weight="2"
-            android:id="@+id/tvPage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Hiiiiiiii!"
-            android:textAppearance="@style/TextAppearance.AppCompat"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_vertical|center_horizontal">
-        </TextView>
+        android:layout_height="wrap_content"
+        android:text="@string/hi"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical|center_horizontal"/>
 
-        <ImageView
-            android:layout_weight="5"
-
-            android:src="@drawable/tutorial_1"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="0dp" />
-        <!-- android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"!-->
+    <ImageView
+        android:layout_weight="5"
+        android:src="@drawable/tutorial_1"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
 
     <TextView
         android:layout_weight="2"
@@ -37,7 +33,5 @@
         android:layout_height="wrap_content"
         android:text="@string/let_me"
         android:layout_gravity="center_horizontal"
-        android:gravity="center_vertical|center_horizontal">
-    </TextView>
-
-    </LinearLayout>
+        android:gravity="center_vertical|center_horizontal"/>
+</LinearLayout>

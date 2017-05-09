@@ -7,6 +7,7 @@
     android:weightSum="10"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_weight="0"
         android:id="@+id/linear_layout"
@@ -17,13 +18,13 @@
 
         <TextView
             style="@style/Text_14pt"
-            android:text="Time:"
+            android:text="@string/time"
             android:id="@+id/time"
             android:paddingBottom="10px"
             android:layout_weight="1" />
         <TextView
             style="@style/Text_14pt"
-            android:text="00:00.000"
+            android:text="@string/time_number2"
             android:id="@+id/timer" />
     </LinearLayout>
     <ProgressBar
@@ -38,7 +39,7 @@
 
     <TextView
         android:layout_weight="1.5"
-        android:text="Palpate arterial pulse"
+        android:text="@string/palpate"
         style="@style/Text"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
@@ -47,25 +48,13 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:gravity="center_vertical|center_horizontal" />
-<LinearLayout android:layout_height="0dp"
-    android:layout_weight="5"
-    android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/lin_img">
 
-</LinearLayout>
-
-    <!--ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="5"
-            android:id="@+id/bigheart"
-            android:src="@drawable/big_heart"
-            android:layout_below="@+id/textView4"
-
-            android:layout_gravity="center_horizontal"
-            android:adjustViewBounds="false">
-        </ImageView!-->
+    <LinearLayout android:layout_height="0dp"
+        android:layout_weight="5"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/lin_img">
+    </LinearLayout>
 
     <TextView
         style="@style/Text"
@@ -77,5 +66,4 @@
         android:layout_centerHorizontal="false"
         android:layout_gravity="center_horizontal"
         android:gravity="center_vertical" />
-
 </LinearLayout>

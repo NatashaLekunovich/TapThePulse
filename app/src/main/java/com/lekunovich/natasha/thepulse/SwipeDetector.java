@@ -16,7 +16,7 @@ public class SwipeDetector implements View.OnTouchListener {
         None // не обнаружено действий
     }
 
-    private static final int HORIZONTAL_MIN_DISTANCE = 200; // Минимальное расстояние для свайпа по горизонтали
+    private static final int HORIZONTAL_MIN_DISTANCE = 300; // Минимальное расстояние для свайпа по горизонтали
     private static final int VERTICAL_MIN_DISTANCE = 80; // Минимальное расстояние для свайпа по вертикали
     private float downX, downY, upX, upY; // Координаты
     private Action mSwipeDetected = Action.None; // Последнее дейтсвие

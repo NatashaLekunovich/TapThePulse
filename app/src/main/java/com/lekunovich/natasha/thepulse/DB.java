@@ -38,35 +38,42 @@ public class DB extends Activity {
     public DB(Context ctx) {
         mCtx = ctx;
     }
+
     // открыть подключение
     public void open() {
         mDBHelper = new DBHelper(mCtx, DB_NAME, null, DB_VERSION);
         mDB = mDBHelper.getWritableDatabase();
     }
+
     // закрыть подключение
     public void close() {
         if (mDBHelper!=null) mDBHelper.close();
     }
+
     // получить все данные из таблицы DB_TABLE
     public Cursor getAllData() {
-        return mDB.query(DB_TABLE, new String[]{COLUMN_ID, KEY_DATE, KEY_DATE_FORMAT, KEY_TIME, COLUMN_PULSE, COLUMN_COMMENT}, null, null, null, null, null);
-        //return mDB.query(DB_TABLE, null, null, null, null, null, null);
+        //return mDB.query(DB_TABLE, new String[]{COLUMN_ID, KEY_DATE, KEY_DATE_FORMAT, KEY_TIME, COLUMN_PULSE, COLUMN_COMMENT}, null, null, null, null, null);
+        return mDB.query(DB_TABLE, null, null, null, null, null, null);
     }
+
     public Cursor Max(String first, String last) {
         String s ="SELECT MAX(" +COLUMN_PULSE+ ") as pulse from "+ DB_TABLE
         + " WHERE "+ KEY_DATE_FORMAT + " BETWEEN '"+first+"' AND '"+last+"'";
         return mDB.rawQuery(s, null);
     }
+
     public Cursor getPulse(String first, String last){
         String s ="SELECT " +COLUMN_PULSE+ " from "+ DB_TABLE
                 + " WHERE "+ KEY_DATE_FORMAT + " BETWEEN '"+first+"' AND '"+last+"'";
         return mDB.rawQuery(s, null);
     }
+
     public Cursor getMinPulse(String first, String last){
         String s ="SELECT MIN(" +COLUMN_PULSE+ ") as pulse from "+ DB_TABLE
                 + " WHERE "+ KEY_DATE_FORMAT + " BETWEEN '"+first+"' AND '"+last+"'";
         return mDB.rawQuery(s, null);
     }
+
     public Cursor getAVGPulse(String first, String last){
         String s ="SELECT AVG(" +COLUMN_PULSE+ ") as pulse from "+ DB_TABLE
                 + " WHERE "+ KEY_DATE_FORMAT + " BETWEEN '"+first+"' AND '"+last+"'";

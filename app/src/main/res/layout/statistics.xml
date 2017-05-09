@@ -20,99 +20,100 @@
             <TextView
                 style="@style/Text12pt"
                 android:layout_marginTop="15dp"
-                android:text="First date:" />
+                android:text="@string/first_date" />
             <EditText
                 style="@style/EditText"
                 android:id="@+id/edit_first_date"
-                android:hint="First date">
+                android:hint="@string/first_date">
             </EditText>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#e2e2e2">
+                android:background="@color/view">
             </View>
             <TextView
                 style="@style/Text12pt"
                 android:layout_marginTop="10dp"
-                android:text="Last date:" />
+                android:text="@string/last_date" />
             <EditText
                 style="@style/EditText"
                 android:id="@+id/edit_last_date"
-                android:hint="Last date">
+                android:hint="@string/last_date">
             </EditText>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#e2e2e2">
+                android:background="@color/view">
             </View>
             <Button
                 style="@style/button"
                 android:paddingLeft="40dp"
                 android:paddingRight="40dp"
-                android:text="Show statistics"
+                android:text="@string/show_st"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/button_red"
-                android:textColor="#d81c1c"
+                android:textColor="@color/red"
                 android:id="@+id/show_stat"
                 android:layout_gravity="center_horizontal" />
+
             <TextView
                 style="@style/zone_text"
                 android:text="@string/max"
-                android:background="#e55656"
-                android:gravity="center_vertical"></TextView>
+                android:background="@color/max"
+                android:gravity="center_vertical" />
             <TextView
                 style="@style/zone_text_desc"
                 android:text="@string/max_desc"/>
             <TextView
                 style="@style/zone_text"
                 android:text="@string/anaerobic"
-                android:background="#e58956"></TextView>
+                android:background="@color/anaer"/>
             <TextView
                 style="@style/zone_text_desc"
                 android:text="@string/anaer_desc"/>
             <TextView
                 style="@style/zone_text"
                 android:text="@string/aerobic"
-                android:background="#e5bc56"></TextView>
+                android:background="@color/aerobic"/>
             <TextView
                 style="@style/zone_text_desc"
                 android:text="@string/aerobic_desc"/>
             <TextView
                 style="@style/zone_text"
                 android:text="@string/fat"
-                android:background="#e5e056"></TextView>
+                android:background="@color/fat"/>
             <TextView
                 style="@style/zone_text_desc"
                 android:text="@string/fat_desc"/>
             <TextView
                 style="@style/zone_text"
                 android:text="@string/recovery"
-                android:background="#99e556"></TextView>
+                android:background="@color/recov"/>
             <TextView
                 style="@style/zone_text_desc"
                 android:text="@string/recovery_desc"/>
             <TextView
                 style="@style/zone_text"
                 android:text="@string/rest​"
-                android:background="#57ce70"></TextView>
+                android:background="@color/rest"/>
             <TextView
                 style="@style/zone_text_desc"
                 android:text="@string/rest_desc"/>
             <TextView
                 style="@style/zone_text"
                 android:text="@string/slow"
-                android:background="#56d7cc"></TextView>
+                android:background="@color/slow"/>
             <TextView
                 style="@style/zone_text_desc"
                 android:text="@string/slow_desc"/>
             <TextView
                 style="@style/zone_text"
                 android:text="@string/bradycardia​"
-                android:background="#55c0d7"></TextView>
+                android:background="@color/brad"/>
             <TextView
                 style="@style/zone_text_desc"
                 android:text="@string/brad_desc"/>
-            </LinearLayout>
-        </ScrollView>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

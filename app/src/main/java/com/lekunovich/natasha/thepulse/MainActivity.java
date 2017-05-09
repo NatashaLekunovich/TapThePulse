@@ -5,9 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.design.widget.NavigationView;
 import android.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -17,20 +15,21 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.text.ParseException;
+import com.lekunovich.natasha.thepulse.Menu.App_Store;
+import com.lekunovich.natasha.thepulse.Menu.History;
+import com.lekunovich.natasha.thepulse.Menu.Instructions;
+import com.lekunovich.natasha.thepulse.Menu.Measurement.MyFragment1;
+import com.lekunovich.natasha.thepulse.Menu.Measurement.MyFragment2;
+import com.lekunovich.natasha.thepulse.Menu.Settings_Fragment;
+import com.lekunovich.natasha.thepulse.Menu.Statistics.Statistics_Fragment;
+import com.lekunovich.natasha.thepulse.Menu.Statistics.Statistics_for_the_fragment.Statistics_for_the_period;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,  MyFragment2.OnHeadlineSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DB db;
-
     FragmentManager myFragmentManager;
     MyFragment2 myFragment2;
     MyFragment1 fr1;
@@ -41,32 +40,20 @@ public class MainActivity extends AppCompatActivity
     Statistics_Fragment statistics;
     Statistics_for_the_period statistics_for_the_period;
     App_Store app_store;
-    long back_pressed;
     DrawerLayout drawer;
     Toolbar toolbar;
     SharedPreferences sharedPreferences;
     NavigationView navigationView;
     static final String LOG_TAG = "myLogs";
     public static int state = 0;
-    String a;
-    String timer_str, repl;
+    public String settings_of_statistics;
+    private long back_pressed;
+
    @Override
     protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
        setContentView(R.layout.activity_main);
        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-       sharedPreferences = getSharedPreferences("settings", 0);
-       // проверяем, первый ли раз открывается программа
-       boolean hasVisited = sharedPreferences.getBoolean("hasVisited", false);
-       if (!hasVisited) {
-           Log.d(LOG_TAG, String.valueOf(hasVisited));
-           Intent intent = new Intent(MainActivity.this, View_Pager_Activity.class);
-           startActivity(intent);
-           // выводим нужную активность
-           SharedPreferences.Editor  e = sharedPreferences.edit();
-           e.putBoolean("hasVisited", true);
-           e.commit();
-       }
        toolbar = (Toolbar) findViewById(R.id.toolbar);
        setSupportActionBar(toolbar);
        getSupportActionBar().setTitle("");
@@ -84,40 +71,51 @@ public class MainActivity extends AppCompatActivity
        action_bar_text = (TextView) findViewById(R.id.action_text);
        db = new DB(this);
        db.open();
+       sharedPreferences = getSharedPreferences("settings", 0);
+       // проверяем, первый ли раз открывается программа
+       boolean hasVisited = sharedPreferences.getBoolean("hasVisited", false);
+       if (!hasVisited) {
+           Log.d(LOG_TAG, String.valueOf(hasVisited));
+           Intent intent = new Intent(MainActivity.this, View_Pager_Activity.class);
+           startActivity(intent);
+           // выводим нужную активность
+           SharedPreferences.Editor  e = sharedPreferences.edit();
+           e.putBoolean("hasVisited", true);
+           e.apply();
+       }
 
        if(savedInstanceState == null){
-           FragmentTransaction fragmentTransaction = myFragmentManager.beginTransaction();
-           fragmentTransaction.add(R.id.container, myFragment2);
-           fragmentTransaction.commit();
+           replace_Fragment(myFragment2, "Measurement");
        }
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
-
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
+            String timer_str;
 
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                timer_str = sharedPreferences.getString("timer", "");
-                    myFragment2.StopTimer();
-                invalidateOptionsMenu();
+                myFragment2.stopTimer();
             }
+
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
                 timer_str = sharedPreferences.getString("timer", "");
                 // если таймер был запущен
-                if (timer_str == "start") {
-                    Replace_Fragment(myFragment2, "Measurement");
-                    myFragment2.counter1 = 0;
+                if (timer_str.equals("start")) {
+                    String measur = sharedPreferences.getString("measurement", "");
+                    if(measur.equals("open")) {
+                        replace_Fragment(myFragment2, "Measurement");
+                        myFragment2.counter1 = 0;
+                    }
                     try {
+                        myFragment2.stopTimer();
                         myFragment2.onResume();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("timer", "stop");
-                    editor.commit();
-                    timer_str = sharedPreferences.getString("timer", "");
+                    editor.apply();
                 }
             }
         };
@@ -125,56 +123,33 @@ public class MainActivity extends AppCompatActivity
        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               a = sharedPreferences.getString("set", "");
-               if (state == 1) {
-                   FragmentTransaction fragmentTransaction1 = myFragmentManager.beginTransaction();
-                   fragmentTransaction1.replace(R.id.container, statistics);
-                   fragmentTransaction1.commit();
-                   action_bar_text.setText("Statistics");
-                   state = 0;
-           }
-              else if (a == "first") {
+           settings_of_statistics = sharedPreferences.getString("set", "");
+           if (state == 1) {
+               replace_Fragment(statistics, "Statistics");
+               state = 0;
+           } else if (settings_of_statistics.equals("first")) {
                // если настройки загружены из статистики
                SharedPreferences.Editor  ed = sharedPreferences.edit();
                ed.putString("set", "three");
-               ed.commit();
-                   FragmentTransaction fragmentTransaction1 = myFragmentManager.beginTransaction();
-                   fragmentTransaction1.replace(R.id.container, statistics);
-                   fragmentTransaction1.commit();
-                   action_bar_text.setText("Statistics");
+               ed.apply();
+               replace_Fragment(statistics, "Statistics");
            } else
                drawer.openDrawer(GravityCompat.START);
            }
        });
        drawer.addDrawerListener(toggle);
        toggle.syncState();
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+       navigationView = (NavigationView) findViewById(R.id.nav_view);
+       navigationView.setNavigationItemSelectedListener(this);
        //выделить первый пункт при открытии меню
        navigationView.getMenu().getItem(0).setChecked(true);
+    }
 
-    }
-    @Override
-    public void onArticleSelected(int count) {
-        //передача данных в окно вывода результата
-        Bundle bundle = new Bundle();
-        bundle.putInt("tag", count);
-        fr1.setArguments(bundle);
-        repl = sharedPreferences.getString("timer", "");
-        if(repl == "stop"){
-            myFragment2.StopTimer();
-        }else {
-            myFragment2.StopTimer();
-            //замена франмента
-            FragmentTransaction fragmentTransaction1 = myFragmentManager.beginTransaction();
-            fragmentTransaction1.replace(R.id.container, fr1);
-            fragmentTransaction1.commit();}
-    }
     // аппаратная кнопка Home
     @Override
     protected void onUserLeaveHint() {
         super.onUserLeaveHint();
-        myFragment2.StopTimer();
+        myFragment2.stopTimer();
         myFragment2.counter1 = 0;
     }
 
@@ -184,75 +159,41 @@ public class MainActivity extends AppCompatActivity
         quitDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                myFragment2.StopTimer();
-                finish();
+            myFragment2.stopTimer();
+            finish();
             }
         });
-        quitDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
+        quitDialog.setNegativeButton("No", null);
         quitDialog.show();
     }
+
     @Override
     public void onBackPressed() {
-        a = sharedPreferences.getString("set", "");
-        Log.d(LOG_TAG, "a back = " + a);
+        settings_of_statistics = sharedPreferences.getString("set", "");
         //чтобы перейти от статистики за период к статистике по кнопке back
         if (state == 1) {
-            FragmentTransaction fragmentTransaction1 = myFragmentManager.beginTransaction();
-            fragmentTransaction1.replace(R.id.container, statistics);
-            fragmentTransaction1.commit();
-            action_bar_text.setText("Statistics");
+            replace_Fragment(statistics, "Statistics");
             state = 0;
-        } else  if(a == "first"){
+        } else  if(settings_of_statistics.equals("first")){
             SharedPreferences.Editor  ed = sharedPreferences.edit();
             ed.putString("set", "three");
-            ed.commit();
-            FragmentTransaction fragmentTransaction1 = myFragmentManager.beginTransaction();
-            fragmentTransaction1.replace(R.id.container, statistics);
-            fragmentTransaction1.commit();
-            action_bar_text.setText("Statistics");
-        }else
-            if (drawer.isDrawerOpen(GravityCompat.START)) {
-                drawer.closeDrawer(GravityCompat.START);
-                myFragment2.onResume();
-            } else if (!drawer.isDrawerOpen(GravityCompat.START)) {
-                drawer.openDrawer(GravityCompat.START);
-                myFragment2.StopTimer();
-            }
+            ed.apply();
+            replace_Fragment(statistics, "Statistics");
+        }else if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else if (!drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.openDrawer(GravityCompat.START);
+            myFragment2.stopTimer();
+        }
         //если кнопка нажата 2 раза
-            if (back_pressed + 800 > System.currentTimeMillis()) {
-                openQuitDialog();
-            } else back_pressed = System.currentTimeMillis();
+        if (back_pressed + 800 > System.currentTimeMillis()) {
+            openQuitDialog();
         }
-
-  /*  @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        else back_pressed = System.currentTimeMillis();
     }
 
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-      int id = item.getItemId();
-      if (id == R.id.action_settings) {
-          return true;
-      }
-      return super.onOptionsItemSelected(item);
-  }*/
-    public void Replace_Fragment(Fragment fr, String action_bar){
+    public void replace_Fragment(Fragment fr, String action_bar){
+        myFragment2.stopTimer();
         FragmentTransaction fragmentTransaction1 = myFragmentManager.beginTransaction();
         fragmentTransaction1.replace(R.id.container, fr);
         fragmentTransaction1.commit();
@@ -262,30 +203,31 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
-        myFragment2.StopTimer();
+        myFragment2.stopTimer();
         if (id == R.id.measure) {
-            Replace_Fragment(myFragment2, "Measurement");
+            replace_Fragment(myFragment2, "Measurement");
         } else if (id == R.id.history) {
-            Replace_Fragment(history, "History");
+            replace_Fragment(history, "History");
             toolbar.setNavigationIcon(R.drawable.bar);
         } else if (id == R.id.statistics) {
-            Replace_Fragment(statistics, "Statistics");
+            replace_Fragment(statistics, "Statistics");
 
         } else if (id == R.id.settings) {
-            Replace_Fragment(settings, "Settings");
+            replace_Fragment(settings, "Settings");
             toolbar.setNavigationIcon(R.drawable.bar);
+
         } else if (id == R.id.instructions) {
-            Replace_Fragment(instructions,"Instructions" );
+           replace_Fragment(instructions,"Instructions" );
             toolbar.setNavigationIcon(R.drawable.bar);
         }
          else if (id == R.id.store) {
-            Replace_Fragment(app_store, "AppStore");
-            action_bar_text.setText("AppStore");
+            replace_Fragment(app_store, "AppStore");
             toolbar.setNavigationIcon(R.drawable.bar);
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
     protected void onDestroy() {
         super.onDestroy();
         // закрываем подключение при выходе

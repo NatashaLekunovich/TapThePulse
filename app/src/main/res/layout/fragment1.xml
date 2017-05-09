@@ -19,15 +19,15 @@
             android:layout_marginTop="15dp">
             <TextView
                 style="@style/Text_14pt"
-                android:text="Time:"
+                android:text="@string/time"
                 android:id="@+id/time"
                 android:paddingBottom="10px"
-                android:textColor="#595959"
+                android:textColor="@color/text_color"
                 android:layout_weight="1" />
             <TextView
                 style="@style/Text_14pt"
-                android:text="01:00.000"
-                android:textColor="#595959"
+                android:text="@string/time_number"
+                android:textColor="@color/text_color"
                 android:id="@+id/timer" />
         </LinearLayout>
         <ProgressBar
@@ -51,9 +51,8 @@
         </TextView>
 
         <TextView
-            android:text="279"
             android:layout_weight="5.5"
-            android:textColor="#d81c1c"
+            android:textColor="@color/red"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:id="@+id/tvMessage"
@@ -65,7 +64,6 @@
             style="@style/Text"
             android:layout_weight="1.5"
             android:text="@string/minute"
-
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal">
         </TextView>
@@ -79,19 +77,21 @@
             <Button
                 style="@style/button"
                 android:id="@+id/restart"
-                android:text="Restart"
+                android:text="@string/restart"
                 android:layout_weight="1"
-                android:textColor="#d81c1c"
+                android:textColor="@color/red"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/button_red" />
             <Button
                 style="@style/button"
                 android:id="@+id/save"
-                android:text="Save"
+                android:text="@string/save"
                 android:layout_weight="1"
                 android:layout_marginLeft="10dp"
-                android:textColor="#00b993"
+                android:textColor="@color/green"
                 android:background="@drawable/save_changes" />
         </LinearLayout>
+
     </LinearLayout>
+
 </RelativeLayout>

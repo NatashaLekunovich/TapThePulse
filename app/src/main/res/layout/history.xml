@@ -5,7 +5,7 @@
     android:id="@+id/rel_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.lekunovich.natasha.thepulse.History"
+    tools:context="com.lekunovich.natasha.thepulse.Menu.History"
     android:orientation="vertical"
     android:weightSum="1">
 
@@ -14,7 +14,7 @@
         android:scrollbars="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="#fff"
+        android:divider="@color/white"
         android:dividerHeight="10dp"
         android:id="@+id/lvData" />
 </RelativeLayout>
